@@ -13,9 +13,9 @@ export class CapitaService {
   deleteRecordUrl:string = "https://firestore.googleapis.com/v1beta1/projects/angular-taske7f39/databases/(default)/documents/tasks/";
 
 
-  getRecordsUrl = "http://localhost/API/project-capita/getRecords.php";
+  /*getRecordsUrl = "http://localhost/API/project-capita/getRecords.php";
   addRecordUrl = "http://localhost/API/project-capita/addRecord.php";
-  deleteRecordUrl = "http://localhost/API/project-capita/deleteRecord.php";
+  deleteRecordUrl = "http://localhost/API/project-capita/deleteRecord.php";*/
 
   cpHeaders = new Headers({ 'Content-Type': 'application/json' });
   options = new RequestOptions({ headers: this.cpHeaders });
