@@ -27,7 +27,7 @@ export class CapitaComponent implements OnInit {
   deleteRecord(id) {
 
       this._capita.deleteRecord( id )
-                        .subscribe( resResponse => {} );
+                        .subscribe( resResponse => { console.log( "Check : " + id ); } );
 
       this._router.navigate( ['/capita'] );
   }

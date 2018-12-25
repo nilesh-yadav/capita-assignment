@@ -1,11 +1,9 @@
-<div style="padding: 20px;">
+<div class="p-20">
   <form [formGroup]="recordForm" (ngSubmit)="saveRecord()" >
-
-    <input type="hidden" class="form-control" id="id" formControlName="id">
 
     <div class="form-group">
       <label>Title</label>
-      <input type="text" class="form-control" id="title" placeholder="Enter Title" formControlName="title">
+      <input type="text" class="form-control" placeholder="Enter Title" formControlName="title">
       <div *ngIf="recordForm.controls['title'].hasError('required') && recordForm.controls['title'].touched" class="alert alert-danger">
           <small class="form-text text-muted">Title is required.</small>
       </div>
@@ -13,8 +11,8 @@
  
     <div class="form-group">
       <label>Description</label>
-      <input type="text" class="form-control" id="last_name" placeholder="Enter Last Name" formControlName="last_name">
-      <div *ngIf="recordForm.controls['last_name'].hasError('required') && recordForm.controls['last_name'].touched" class="alert alert-danger">
+      <input type="text" class="form-control" placeholder="Enter Description" formControlName="description">
+      <div *ngIf="recordForm.controls['description'].hasError('required') && recordForm.controls['description'].touched" class="alert alert-danger">
           <small class="form-text text-muted">Desciption is required.</small>
       </div>
     </div>

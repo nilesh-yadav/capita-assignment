@@ -1,11 +1,11 @@
-<div style="padding: 20px;">
-  <div>
-    <button class="btn" style="float: left;" (click)="addRecord()">Add Record</button>
+<div class="p-20">
+  <div style="min-height: 200px;">
+      <img src="../../../assets/banner.png" class="img-fluid img-banner">
   </div>
 
-  <br><br>
+  <button class="btn" style="float: left;" (click)="addRecord()">Add Record</button>
 
-  <router-outlet></router-outlet>
+  <br><br>
 
   <table class="table">
     <thead class="thead-dark">
@@ -23,7 +23,7 @@
         <td>{{record?.title}}</td>
         <td>{{record?.description}}</td>
         <td>
-            <a (click)="deleteRecord(record.id)">Delete</a>
+            <a href="javascript:void(0);" (click)="deleteRecord(record.id)">Delete</a>
         </td>
       </tr>
 

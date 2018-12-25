@@ -8,48 +8,34 @@ import { map } from 'rxjs/operators';
 })
 export class CapitaService {
 
-getRecordsUrl = "https://firestore.googleapis.com/v1beta1/projects/angular-taske7f39/databases/(default)/documents/tasks";
-  addRecordUrl = "https://firestore.googleapis.com/v1beta1/projects/angular-taske7f39/databases/(default)/documents/tasks";
-  deleteRecordUrl = "https://firestore.googleapis.com/v1beta1/projects/angular-taske7f39/databases/(default)/documents/tasks/";
+  getRecordsUrl: string = "https://firestore.googleapis.com/v1beta1/projects/angular-taske7f39/databases/(default)/documents/tasks";
+  addRecordUrl: string = "https://firestore.googleapis.com/v1beta1/projects/angular-taske7f39/databases/(default)/documents/tasks";
+  deleteRecordUrl:string = "https://firestore.googleapis.com/v1beta1/projects/angular-taske7f39/databases/(default)/documents/tasks/";
+
+
+  getRecordsUrl = "http://localhost/API/project-capita/getRecords.php";
+  addRecordUrl = "http://localhost/API/project-capita/addRecord.php";
+  deleteRecordUrl = "http://localhost/API/project-capita/deleteRecord.php";
+
+  cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+  options = new RequestOptions({ headers: this.cpHeaders });
 
   constructor( private _http:Http ) { }
 
   getRecords() {
 
-      let myHeaders = new Headers();
-      myHeaders.append('Content-Type', 'application/json');  
-
-      let options = new RequestOptions({ headers: myHeaders });
-
-  	  return this._http.get( this.getRecordsUrl, options ).pipe(map( ( response: Response ) => response.json() ) );
+  	  return this._http.get( this.getRecordsUrl, this.options ).pipe(map( ( response: Response ) => response.json() ) );
   }
 
   addRecord( objRecord ) {
 
-        let objRecord = {
-                     "fields":{
-                         "title":{
-                            "stringValue": objRecord.title
-                         },
-                         "description":{
-                            "stringValue": objRecord.description
-                         }
-                     }
-                  };
-
-    		let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-      	let options = new RequestOptions({ headers: cpHeaders });
-
-    		return this._http.post( this.addRecordUrl, objRecord, options )
+    		return this._http.post( this.addRecordUrl, objRecord, this.options )
     						.pipe( map( ( response: Response ) => response.json() ) );
   }
 
   deleteRecord( id ) {
 
-        let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: cpHeaders });
-
-        return this._http.delete( this.deleteRecordUrl + "/{id}", options )
+        return this._http.delete( this.deleteRecordUrl + "{id}", this.options )
                 .pipe( map( ( response: Response ) => response.json() ) );
   }
 }

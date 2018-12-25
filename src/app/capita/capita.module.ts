@@ -13,3 +13,4 @@ import { AddrecordComponent } from './addrecord/addrecord.component';
   declarations: [CapitaComponent, AddrecordComponent]
 })
 export class CapitaModule { }
+ 
