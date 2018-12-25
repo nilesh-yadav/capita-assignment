@@ -1,0 +1,32 @@
+<div style="padding: 20px;">
+  <div>
+    <button class="btn" style="float: left;" (click)="addRecord()">Add Record</button>
+  </div>
+
+  <br><br>
+
+  <router-outlet></router-outlet>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Desciption</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let record of records let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{record?.title}}</td>
+        <td>{{record?.description}}</td>
+        <td>
+            <a (click)="deleteRecord(record.id)">Delete</a>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>  
+</div>
