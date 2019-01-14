@@ -11,6 +11,7 @@ import { CapitaService } from './services/capita.service';
 export class CapitaComponent implements OnInit {
 
   records = [];
+  message = null;
 
   constructor( private _capita: CapitaService, private _router: Router, private route: ActivatedRoute ) {
   }
@@ -24,12 +25,24 @@ export class CapitaComponent implements OnInit {
       this._router.navigate( ['addrecord'], {relativeTo: this.route});
   }
 
-  deleteRecord(id) {
+  deleteRecord(name: string) {
+    confirm('Do you want to delete the record?');
+    this._capita.deleteRecord( name ).subscribe(
+      (response: Response) => {
+        this.showTransactionMessage('Deleted successfully!');
+        this._capita.getRecords().subscribe(
+          ( resResponse => { this.records = resResponse } );
+      },
+      (error) => this.showTransactionMessage(error)
+    );
+  }
 
-      this._capita.deleteRecord( id )
-                        .subscribe( resResponse => { console.log( "Check : " + id ); } );
-
-      this._router.navigate( ['/capita'] );
+  showTransactionMessage( message: string ) {
+    this.message = message;
+    setTimeout(
+      () => this.message = null,
+      3000
+    );
   }
 
 }

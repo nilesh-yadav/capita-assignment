@@ -28,7 +28,9 @@ export class AddrecordComponent implements OnInit {
       this._capita.addRecord( this.recordForm.value )
                     .subscribe( resResponse => {console.log( resResponse ); } );
 
-      this._router.navigate( ['/capita'] );
+      setTimeout( () => {
+        this._router.navigate( ['/capita'] );
+      }, 1000);
   }
 
 }

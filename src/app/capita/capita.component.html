@@ -3,6 +3,8 @@
       <img src="../../../assets/banner.png" class="img-fluid img-banner">
   </div>
 
+  <p class="alert alert-info" *ngIf="message">{{ message }}</p>
+
   <button class="btn" style="float: left;" (click)="addRecord()">Add Record</button>
 
   <br><br>
@@ -23,7 +25,7 @@
         <td>{{record?.title}}</td>
         <td>{{record?.description}}</td>
         <td>
-            <a href="javascript:void(0);" (click)="deleteRecord(record.id)">Delete</a>
+            <a href="javascript:void(0);" (click)="deleteRecord(record.name)">Delete</a>
         </td>
       </tr>
 
